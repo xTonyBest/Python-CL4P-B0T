@@ -15,7 +15,14 @@ async def on_message(message):
     return
   
   for greeting in greetings:
-    if message.content.toLowerCase.startswith(greeting):
-      await message.channel.send("Minion, " + greeting + "!")
+    g = message.content
+    if g.lower() == greeting:
+      await message.channel.send("Minion, " + greeting.capitalize() + "!")
+
+  if message.content.startswith("/play"):
+    url = message.content[6:]
+    # TODO: implement a method to play a video given its url
+
+
 
 client.run(os.getenv("TOKEN"))
